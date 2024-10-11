@@ -4,10 +4,14 @@ on:
   repository_dispatch:
     types: [repository_created]
 
+permissions:
+  contents: read
+  metadata: read
+
 jobs:
   notify:
     runs-on: ubuntu-latest
 
     steps:
     - name: Print repository details
-      run: "echo 'Repository created: ${{ github.repository }}'"
+      run: "echo 'Repository created: ${{ github.event.client_payload.repository.name }}'"
