@@ -1,7 +1,8 @@
 name: Repository Creation Trigger
 
 on:
-  create:
+  repository_dispatch:
+    types: [repository_created]
 
 jobs:
   notify:
